@@ -18,7 +18,7 @@ library(spatialEco)
 
  
 # Grab the daily search directory names
- lod<- list.files()   
+ lod<- list.files("GPStracks")   
  lod<-lod[grep("2020",lod)]
  lod0<- lod
  # Split into year month and day components
@@ -46,14 +46,14 @@ library(spatialEco)
  for(i in 1:length(lod0)){
  
   fnames<- NULL
-  lof<- list.files(lod0[i])
+  lof<- list.files(paste("GPStracks/",lod0[i],sep=""))
   fnames<- lof[ grep("gpx",lof) ]
   nfiles[i]<- length(fnames)
   coords1<- coords2<- coords3<- coords4<- NULL
   regpoints1<- regpoints2<- regpoints3<- regpoints4<- NULL
   
   if(nfiles[i] >=1){
-    f1 <- readOGR(paste(lod0[i],"/",fnames[1],sep=""),"track_points")
+    f1 <- readOGR(paste("GPStracks/",lod0[i],"/",fnames[1],sep=""),"track_points")
     t1<-f1@data$time
     
     t1<- unlist(strsplit(t1,split=" "))[seq(2,2*length(t1),2)]
@@ -76,7 +76,7 @@ library(spatialEco)
 
   }
   if(nfiles[i] >=2){
-    f2 <- readOGR(paste(lod0[i],"/",fnames[2],sep=""),"track_points")
+    f2 <- readOGR(paste("GPStracks/",lod0[i],"/",fnames[2],sep=""),"track_points")
     t2<-f2@data$time
     t2<- unlist(strsplit(t2,split=" "))[seq(2,2*length(t2),2)]
     t2<- substring(t2,1,8)
@@ -110,7 +110,7 @@ library(spatialEco)
   }
  
   if(nfiles[i] >=3){
-    f3 <- readOGR(paste(lod0[i],"/",fnames[3],sep=""),"track_points")
+    f3 <- readOGR(paste("GPStracks/",lod0[i],"/",fnames[3],sep=""),"track_points")
     t3<-f3@data$time
     t3<- unlist(strsplit(t3,split=" "))[seq(2,2*length(t3),2)]
     t3<- substring(t3,1,8)
@@ -131,7 +131,7 @@ library(spatialEco)
     
   }
     if(nfiles[i] >=4){
-    f4 <- readOGR(paste(lod0[i],"/",fnames[4],sep=""),"track_points")
+    f4 <- readOGR(paste("GPStracks/",lod0[i],"/",fnames[4],sep=""),"track_points")
     t4<-f4@data$time
     t4<- unlist(strsplit(t4,split=" "))[seq(2,2*length(t4),2)]
     t4<- substring(t4,1,8)
@@ -180,7 +180,7 @@ library(spatialEco)
   
 }  # Ends loop over all directories and gpx files
 
-
+save(buffered.tracks, nfiles, line.tracks, allpoints, file = "spatial_data.RData")
 
  
 
