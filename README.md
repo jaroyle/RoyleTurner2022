@@ -14,5 +14,6 @@ Organizes the capture data and search effort data into the encounter data file (
 There are a number of .RData files included as well:
    1. utils.RData -- 3 utility functions used to make quick and dirty plots
    2. spatial_data.RData -- produced from Script 1 -- the buffered GPS tracks from the 2020 survey effort, including a few other objects created in Script 1.
+   3. effortmatrix.RData -- this is produced by Script 2, it is the gridded effort covariate used in the paper. (basically it combines all buffered tracks, overlays the grid, addes them up).
 
       
