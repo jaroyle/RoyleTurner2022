@@ -11,4 +11,8 @@ Script 3: (not done yet)
 Organizes the capture data and search effort data into the encounter data file (EDF) and trap deployment file (TDF) that SCR models require. Then some SCR models are fitted using the oSCR package. 
 
 
-More here later.
+There are a number of .RData files included as well:
+   1. utils.RData -- 3 utility functions used to make quick and dirty plots
+   2. spatial_data.RData -- produced from Script 1 -- the buffered GPS tracks from the 2020 survey effort, including a few other objects created in Script 1.
+
+      
